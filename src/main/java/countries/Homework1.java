@@ -59,9 +59,9 @@ public class Homework1 {
      */
     public void streamPipeline5() {
         countries.stream()
-                .map(country -> country.getPopulation())
-                .sorted()
+                .sorted(Comparator.comparingLong(Country::getPopulation))
                 .limit(10)
+                .map(Country::getName)
                 .forEach(System.out::println);
     }
 
@@ -147,8 +147,8 @@ ed by the language code "es").
      * Returns the largest country with non-null area.
      */
     public Optional<Country> streamPipeline14() {
-        return countries.stream().filter(country -> country.getArea() ==null)
-                .max(Comparator.comparingLong(Country::getPopulation));
+        return countries.stream().filter(country -> country.getArea() !=null)
+                .max(Comparator.comparing(Country::getArea));
     }
 
     /**
