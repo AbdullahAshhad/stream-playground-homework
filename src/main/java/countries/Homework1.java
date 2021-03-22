@@ -139,7 +139,8 @@ ed by the language code "es").
      */
     public void streamPipeline13() {
         countries.stream().filter(country -> country.getArea() == null)
-                .map(Country::getRegion).distinct()
+                .map(Country::getRegion)
+                .distinct()
                 .forEach(System.out::println);
     }
 
